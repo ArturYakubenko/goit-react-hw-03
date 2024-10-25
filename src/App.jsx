@@ -1,9 +1,9 @@
 import './App.css'
-import './Components/ContactForm'
-import ContactForm from './Components/ContactForm'
+import './components/ContactForm'
+import ContactForm from './components/ContactForm'
 import { useState } from 'react'
-import ContactList from './Components/ContactList'
-import SearchBox from './Components/SearchBox'
+import ContactList from './components/ContactList'
+import SearchBox from './components/SearchBox'
 
 
 function App() {
