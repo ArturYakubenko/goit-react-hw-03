@@ -9,7 +9,6 @@ import { useEffect } from "react"
 
 function App() {
 
-  const [formData, getFormData] = useState(null)
   const [array, setArray] = useState([])
   const [nextId, setNextId] = useState(1)
   const [filter, setFilter] = useState("")
@@ -41,8 +40,7 @@ function App() {
       Name: newContact.Name,
       Number: newContact.Number
     }
-    getFormData(addContact)
-
+    setArray((prev) => [...prev, addContact])
   }
 
   useEffect(() => { 
@@ -51,8 +49,7 @@ function App() {
         }
     }, [array])
 
-   
-  console.log(array)
+  
 
   const handelDelete = (id) => { console.log(id)
     const newArray = array.filter(item => item.id !== id)
@@ -67,7 +64,7 @@ function App() {
         <h1>Phonebook</h1>
         <ContactForm onAddContacts={onAddContacts} />
         <SearchBox  setFilter={setFilter}/>
-        <ContactList formData={formData} setArray={setArray} handelDelete={handelDelete} filterUsers={filterUsers} />
+        <ContactList setArray={setArray} handelDelete={handelDelete} filterUsers={filterUsers} />
       </div>
     </>
   )
