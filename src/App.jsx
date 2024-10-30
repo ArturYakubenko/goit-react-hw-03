@@ -5,12 +5,12 @@ import { useState } from 'react'
 import ContactList from './components/ContactList'
 import SearchBox from './components/SearchBox'
 import { useEffect } from "react"
+import { nanoid } from 'nanoid' // Імпортуємо nanoid для генерації унікальних ID
 
 
 function App() {
 
   const [array, setArray] = useState([])
-  const [nextId, setNextId] = useState(1)
   const [filter, setFilter] = useState("")
 
     useEffect(() => {
@@ -27,16 +27,9 @@ function App() {
   );
  
   const onAddContacts = (newContact) => {
-    setNextId(prevId => prevId + 1)
-    let newId
-      if (!array.includes(`id-${nextId}`)) {
-        newId = nextId
-      }
-      else {
-        setNextId(prevId => prevId + 1)
-      }
+    
     const addContact = {
-      id: `id-${newId}`,
+      id: nanoid(),
       Name: newContact.Name,
       Number: newContact.Number
     }
